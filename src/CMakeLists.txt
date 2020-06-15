@@ -16,4 +16,10 @@ if (APPLE)
         PRIVATE
         apple
     )
+elseif (WIN32)
+    target_link_libraries(
+        main
+        PRIVATE
+        windows
+    )
 endif()

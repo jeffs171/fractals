@@ -12,7 +12,9 @@ set(FRACTALS ${CMAKE_CURRENT_SOURCE_DIR})
 
 if (APPLE)
     include(${PLATFORM}/apple.cmake)
-endif()
+elseif (WIN32)
+    include(${PLATFORM}/windows.cmake)
+endif(APPLE)
 
 add_subdirectory(${EXTERNAL}/glad)
 add_subdirectory(${EXTERNAL}/glfw)
