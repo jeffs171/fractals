@@ -16,6 +16,5 @@ elseif (WIN32)
     include(${PLATFORM}/windows.cmake)
 endif(APPLE)
 
-add_subdirectory(${EXTERNAL}/glad)
-add_subdirectory(${EXTERNAL}/glfw)
+add_subdirectory(${EXTERNAL})
 add_subdirectory(${FRACTALS}/src)

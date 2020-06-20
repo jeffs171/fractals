@@ -2,12 +2,22 @@ cmake_minimum_required(VERSION 3.17)
 
 # include(CMakePrintHelpers)
 # cmake_print_properties(TARGETS glfw PROPERTIES LINK_INTERFACE_LIBRARIES )
-add_executable(main main.cpp)
+
+file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
+
+add_executable(main ${SOURCES} ${HEADERS})
 target_link_libraries(
     main
     PRIVATE
     glad
     glfw
+)
+target_include_directories(
+	main
+	PRIVATE
+	${EXTERNAL}/imgui
+	${EXTERNAL}/imgui/examples
 )
 
 if (APPLE)
