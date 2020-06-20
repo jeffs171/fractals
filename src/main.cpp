@@ -19,6 +19,7 @@ int main()
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
+    const char* glsl_version = "#version 150";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -32,7 +33,7 @@ int main()
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
-        std::cout << "Failed to create GLFW window" << std::endl;
+        std::cerr << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
@@ -47,6 +48,13 @@ int main()
         return -1;
     }    
 
+    // imgui: setup imgui context
+    // ---------------------------------------
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -55,16 +63,34 @@ int main()
         // -----
         processInput(window);
 
+		// Start the Dear ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+		// Do Imgiu work
+		static float clearColor[] = { 0.2f, 0.3f, 0.3f };
+		ImGui::ColorEdit3("Clear color", clearColor);
+        ImGui::Render();
+
         // render
-        // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        // ------w
+        glClearColor(clearColor[0], clearColor[1], clearColor[2], 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+		// Draw imgui
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+	
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
