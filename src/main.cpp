@@ -63,22 +63,22 @@ int main()
         // -----
         processInput(window);
 
-		// Start the Dear ImGui frame
+        // Start the Dear ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-		// Do Imgiu work
-		static float clearColor[] = { 0.2f, 0.3f, 0.3f };
-		ImGui::ColorEdit3("Clear color", clearColor);
+        // Do imgui work
+        static float clearColor[] = { 0.2f, 0.3f, 0.3f };
+        ImGui::ColorEdit3("Clear color", clearColor);
         ImGui::Render();
 
         // render
-        // ------w
+        // ------
         glClearColor(clearColor[0], clearColor[1], clearColor[2], 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-		// Draw imgui
+        // Draw imgui
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -87,7 +87,7 @@ int main()
         glfwPollEvents();
     }
 
-	
+   
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
