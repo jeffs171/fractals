@@ -31,5 +31,10 @@
 *.out
 *.app
 
-# Private things
-.ssh
+# Build output
+build/
+
+# Third party files
+third_party/glad/include
+third_party/glad/src
+third_party/glfw/include
