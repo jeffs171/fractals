@@ -18,6 +18,7 @@ fractals/
 ## Setup
 1. Get GLAD from https://glad.dav1d.de/
 2. Get GLFW from https://www.glfw.org/download.html
+3. Get submodules with `git submodule update --init --recursive`
 3. Place them in the third_party directory as per the instructions in third_party/README.md
 4. Make a new folder called `build` 
 5. `cmake ..`
