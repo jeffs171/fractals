@@ -14,5 +14,5 @@ third_party/
 │   │  ├──GLFW
 │   ├──lib
 │   ├──CMakeLists.txt
-├── imgui/
+├── imgui 
 ```
