@@ -1,26 +1,13 @@
 cmake_minimum_required(VERSION 3.17)
 
-# include(CMakePrintHelpers)
-# cmake_print_properties(TARGETS glfw PROPERTIES LINK_INTERFACE_LIBRARIES )
-
-file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
-file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
-
-file(GLOB IMGUI_SOURCES "${EXTERNAL}/imgui/*.cpp" "${EXTERNAL}/imgui/examples/imgui_impl_glfw.cpp" "${EXTERNAL}/imgui/examples/imgui_impl_opengl3.cpp")
-
-add_executable(main ${SOURCES} ${HEADERS} ${IMGUI_SOURCES})
+add_executable(main main.cpp)
 
 target_link_libraries(
     main
     PRIVATE
     glad
     glfw
-)
-target_include_directories(
-	main
-	PRIVATE
-	${EXTERNAL}/imgui
-	${EXTERNAL}/imgui/examples
+    imgui
 )
 
 if (APPLE)
