@@ -57,20 +57,20 @@ int main()
 
     // render loop
     // -----------
-	while (!glfwWindowShouldClose(window))
-	{
-		// input
-		// -----
-		processInput(window);
+   while (!glfwWindowShouldClose(window))
+   {
+      // input
+      // -----
+      processInput(window);
 
-		// start ImGui frame
-		// ------
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-		// Uncomment if you want to see what ImGui can do
-		// ImGui::ShowDemoWindow();
-		ImGui::Begin("Fractals");
+      // start ImGui frame
+      // ------
+      ImGui_ImplOpenGL3_NewFrame();
+      ImGui_ImplGlfw_NewFrame();
+      ImGui::NewFrame();
+      // Uncomment if you want to see what ImGui can do
+      // ImGui::ShowDemoWindow();
+      ImGui::Begin("Fractals");
 
 
         // render
@@ -82,9 +82,9 @@ int main()
 
         // render ImGui on top of everything else
         // ------
-		ImGui::End();
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+      ImGui::End();
+      ImGui::Render();
+      ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
