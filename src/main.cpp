@@ -59,37 +59,37 @@ int main()
     // -----------
    while (!glfwWindowShouldClose(window))
    {
-      // input
-      // -----
-      processInput(window);
-
-      // start ImGui frame
-      // ------
-      ImGui_ImplOpenGL3_NewFrame();
-      ImGui_ImplGlfw_NewFrame();
-      ImGui::NewFrame();
-      // Uncomment if you want to see what ImGui can do
-      // ImGui::ShowDemoWindow();
-      ImGui::Begin("Fractals");
-
-
-        // render
-        // ------
-        static float clearColor[] = { 0.2f, 0.3f, 0.3f };
-        ImGui::ColorEdit3("Clear color", clearColor);
-        glClearColor(clearColor[0], clearColor[1], clearColor[2], 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        // render ImGui on top of everything else
-        // ------
-      ImGui::End();
-      ImGui::Render();
-      ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-        // -------------------------------------------------------------------------------
-        glfwSwapBuffers(window);
-        glfwPollEvents();
+       // input
+       // -----
+       processInput(window);
+       
+       // start ImGui frame
+       // ------
+       ImGui_ImplOpenGL3_NewFrame();
+       ImGui_ImplGlfw_NewFrame();
+       ImGui::NewFrame();
+       // Uncomment if you want to see what ImGui can do
+       // ImGui::ShowDemoWindow();
+       ImGui::Begin("Fractals");
+       
+       
+       // render
+       // ------
+       static float clearColor[] = { 0.2f, 0.3f, 0.3f };
+       ImGui::ColorEdit3("Clear color", clearColor);
+       glClearColor(clearColor[0], clearColor[1], clearColor[2], 1.0f);
+       glClear(GL_COLOR_BUFFER_BIT);
+       
+       // render ImGui on top of everything else
+       // ------
+       ImGui::End();
+       ImGui::Render();
+       ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+       
+       // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+       // -------------------------------------------------------------------------------
+       glfwSwapBuffers(window);
+       glfwPollEvents();
     }
 
    
